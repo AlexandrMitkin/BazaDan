@@ -6,7 +6,7 @@ from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
-templates=Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="templates")
 
 users = []
 
@@ -19,13 +19,13 @@ class User(BaseModel):
 
 @app.get("/")
 def get_all_messages(request: Request) -> HTMLResponse:
-    return templates.TemplateResponse("users.html",{"request":request, "users":users})
+    return templates.TemplateResponse("users.html", {"request": request, "users": users})
 
 
 @app.get(path="/user/{user_id}")
 def get_all_messages(request: Request, user_id: int) -> HTMLResponse:
     try:
-        return templates.TemplateResponse("users.html",{"request":request, "user":users[user_id-1]})
+        return templates.TemplateResponse("users.html", {"request": request, "user": users[user_id - 1]})
     except IndexError:
         raise HTTPException(status_code=404, detail="User not found")
 
