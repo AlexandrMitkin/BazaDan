@@ -31,6 +31,6 @@ urlpatterns = [
     #path("shop/",shop),
     #path("basket/",basket),
     path("r",registration_page),
-    #path("",sign_up_by_django),
-    path("",sign_up_by_html),
+    path("",sign_up_by_django),
+    path("django_sign_up",sign_up_by_html),
 ]
