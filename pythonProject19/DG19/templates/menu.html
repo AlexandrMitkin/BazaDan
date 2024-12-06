@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        {% block pagename %}
+        <h1>Меню</h1>
+        {% endblock %}
+    </header>
+    <nav>
+        {% block menu %}
+            <a href="http://127.0.0.1:8000/">Главная</a>
+            <br><br>
+            <a href="http://127.0.0.1:8000/shop/">Магазин</a>
+            <br><br>
+            <a href="http://127.0.0.1:8000/basket/">Корзина</a>
+        {% endblock %}
+    </nav>
+    <main>
+        {% block  content  %}
+        {% endblock %}
+    </main>
+
+
+
+
+</body>
+</html>
