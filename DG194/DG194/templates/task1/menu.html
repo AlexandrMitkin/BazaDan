@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href='{% static "style.css" %}'>
+</head>
+<body>
+    <header>
+        {% block pagename %}
+        <h1>Меню</h1>
+        {% endblock %}
+    </header>
+    <nav>
+        {% block menu %}
+            <a href="http://127.0.0.1:8000/">Главная</a>
+            <br>
+            <a href="http://127.0.0.1:8000/platform/news/">Новое задание</a>
+            <br><br>
+        {% endblock %}
+    </nav>
+    <main>
+        {% block  content  %}
+        {% endblock %}
+    </main>
