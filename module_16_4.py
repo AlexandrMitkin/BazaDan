@@ -1,4 +1,4 @@
-from fastapi import FastAPI, status, Body, HTTPException
+from fastapi import FastAPI, status, Body, HTTPException, Path
 from pydantic import BaseModel
 from typing import List
 
@@ -30,16 +30,13 @@ def create_message(user: User) -> User:
 
 
 @app.put("/user/{user_id}/{username}/{age}")
-def update_messages(user_id: int, username: str, age: int) -> User:
-    try:
-        for i in users:
-            if i.id == user_id:
-                i.username = username
-                i.age = age
-                return i
-        k = 5 / 0
-    except ZeroDivisionError:
-        raise HTTPException(status_code=404, detail="User was not found")
+def update_messages(user_id: int, username: str=Path(min_length=3, max_length=15), age: int=Path(ge=1, le=100) ) -> User:
+    for i in users:
+        if i.id == user_id:
+            i.username = username
+            i.age = age
+            return i
+    raise HTTPException(status_code=404, detail="User was not found")
 
 
 @app.delete("/user/{user_id}")
